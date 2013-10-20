@@ -69,6 +69,7 @@
 			  </div>
 			  <button type="submit" class="btn btn-default">Submit</button>
 			</form>
+
 			<ul class="navbar-right">
 			  <li class="dropdown nav navbar-nav header-btn">
 			  	<a href="#" class="btn-notifications"><i class="icon-envelope btn"></i></a>
@@ -84,11 +85,13 @@
 		  </div><!-- /.navbar-collapse -->
 	  </div><!--/container-->
 	</nav>
+
 	<div class="tab-content">
 	<!-- Begin Home Content -->
 	<div class="tab-pane active" id="dashboard">
 		<div class="header-dropdown">
 			<div class="successmessage hide"></div>
+		
 			<div class="container">
 				<a data-toggle="modal" href="#myModal"  class="btn-sm header-links pull-left" title="Add Widgets"><i class="icon-plus"></i> Add Widgets</a>
 				  <!-- Modal -->
@@ -111,6 +114,7 @@
 				  </div><!-- /.modal -->	
 				  <a href="#" class="btn-sm header-links pull-left" title="Manage Widgets"><i class="icon-th-large"></i> Manage Widgets</a>
 				  <a href="#" class="btn-sm header-links pull-right" title="Manage Widgets"><i class="icon-th-large"></i> Select Dashboard</a>
+	  
 			</div><!--/container-->
 		</div><!--/header-dropdown-->
 		
@@ -125,6 +129,9 @@
 				</div>
 			</div>
  
+
+
+
 			<div class="row">
 				<div class="col-md-12">
 				<div class="panel panel-default">
@@ -158,7 +165,7 @@
 							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Latest MSL Entries</span></h3>
 						</div>
 						<div class="panel-body">
-							Text	
+							
 						</div>
 					</div>
 					<div class="panel panel-default">
@@ -166,7 +173,7 @@
 							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Latest CM actions</span></h3>
 						</div>
 						<div class="panel-body">
-							Text
+							
 						</div>
 					</div>
 				</div><!--/col-md-6-->
@@ -252,6 +259,7 @@
 										<input type="hidden" id="cmdbid" class="form-control" value="text">
 									</fieldset>		
 									<div id="cmlink"></div>
+
 										<label for="cmanalyst">CM Analyst</label>
 										<select class="form-control selectpicker" id="cmanalyst">
 											<option>Nayland</option>
@@ -316,6 +324,7 @@
 										<label for="cmmodified">Modified Date</label>
 										<input type="text" class="form-control" id="cmmodified">
 										</fieldset>
+										
 									</div>
 								</form>												 
 							</div>
@@ -328,6 +337,7 @@
 					</div><!-- /.modal -->	
 					<!-- End modal for add CM -->
 					<!-- Begin modal for view CM -->
+
 				<!-- Modal -->
 				<div class="modal fade" id="viewcmaction" tabindex="-1" role="dialog" aria-labelledby="viewCMActionLabel1" aria-hidden="true">
 					<div class="modal-dialog">
@@ -337,8 +347,10 @@
 								<h4 class="modal-title">View CM Action</h4>
 							</div>
 							<div class="modal-body">
+								
 								<form role="form" class="form-inline">
 								<div class="form-group">									
+
 									<fieldset disabled>
 										<label for="viewcmnumber">CM Number</label>									
 										<input type="text" id="viewcmnumber" class="form-control" value="text">										
@@ -425,6 +437,7 @@
 										<label for="viewcmmodified">Modified Date</label>
 										<input type="text" class="form-control" id="viewcmmodified">
 										</fieldset>
+										
 									</div>
 								</form>									 
 							</div>
@@ -435,15 +448,21 @@
 							</div><!-- /.modal-content -->
 						</div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->	
+					
 					<!-- End modal for view CM -->
-			
+					
+
+					
+					
 					<a href="#" class="btn-sm header-links pull-left" title="Generate ALP Numbers" onClick="runALPs();"><i class="icon-plus"></i> Generate ALP Numbers</a>
 					<a href="#" class="btn-sm header-links pull-left" title="Generate Report"><i class="icon-folder-close"></i> Generate Reports</a>
 					<a href="#" class="btn-sm header-links pull-right" title="Show Filter"><i class="icon-filter"></i> Show Filter</a>
 					<a href="#" class="btn-sm header-links pull-right" title="Add or Remove columns"><i class="icon-columns"></i> Customize Columns</a>
 				</div><!--/container-->
 			</div><!--/header-dropdown-->
+			
 			<div class="successmessage hide"></div>
+
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -484,6 +503,8 @@
 									<tbody>		
 									</tbody>
 								</table>
+								<br>
+			
 							</div>
 						</div>
 					</div><!--/span12-->
@@ -545,8 +566,12 @@
 							</table>	
 						</div>
 					</div>
+							
+								
 				</div>		
 			</div><!-- Container -->
+
 	</div><!--/cm tracker-->
+	
   </body>
 </html>
