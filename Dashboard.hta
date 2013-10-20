@@ -4,23 +4,23 @@
 <head>
     <meta http-equiv="x-ua-compatible" content="ie=9">
 	<hta:application id="wssm"
-		ICON				= "icon.ico"
-     	border           	= "thin"
-		autocenter			= "yes"
+		ICON			= "icon.ico"
+		border			= "thin"
+		autocenter		= "yes"
 		APPLICATIONNAME		= "Analyst Dashboard"
-    	borderStyle        	= "normal"
-    	caption           	= "yes"
-    	contextMenu       	= "yes"
-     	maximizeButton    	= "yes"
-     	minimizeButton   	= "yes"
-     	navigable      		= "yes"
-		scroll				= "yes"
-     	showInTaskbar    	= "yes"
-     	singleInstance    	= "no"
-     	sysmenu            	= "yes"
-     	version            	= "0.1.2"
-		windowstate			= "maximize" 
-		 />
+		borderStyle		= "normal"
+		caption			= "yes"
+		contextMenu		= "yes"
+		maximizeButton		= "yes"
+		minimizeButton		= "yes"
+		navigable		= "yes"
+		scroll			= "yes"
+		showInTaskbar		= "yes"
+		singleInstance		= "no"
+		sysmenu			= "yes"
+		version			= "0.1.2"
+		windowstate		= "maximize" 
+	/>
 	
 	<!-- Load JS Modules -->
 
@@ -32,7 +32,7 @@
 	<script src="jquery-ui-1.10.3.custom.js"></script>
 	
 	<script src="./Dependencies/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-    	<script src="./Dependencies/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+	<script src="./Dependencies/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
 	<script src="./Dependencies/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
 	
 	<!-- Load other script modules -->
@@ -43,7 +43,7 @@
 	<link href="bootstrap-select.min.css" rel="stylesheet">
 	<link href="bootstrap-select.css" rel="stylesheet">
 	<link href="./font-awesome/css/font-awesome.css" rel="stylesheet">
-	 <link href="./dashboard-custom/custom.css" rel="stylesheet">
+	<link href="./dashboard-custom/custom.css" rel="stylesheet">
 	<link href="../jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
 	<!-- Extra JS -->
 	<script src="./dashboard-custom/custom-js.js"></script>
@@ -55,32 +55,32 @@
   <body>
 	<nav class="navbar navbar-default .navbar-static-top" role="navigation">
 	  <div class="container">
-		  <!-- Collect the nav links, forms, and other content for toggling -->
-		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav ">
-			  <li class="active"><a href="#dashboard" data-toggle="tab"><i class="icon-dashboard"></i> Dashboard</a></li>
-			  <li><a href="#indicators" data-toggle="tab"><i class="icon-list"></i> Indicators</a></li>
-			  <li><a href="#cmtracker" data-toggle="tab" id="cmtrackerlinktop"><i class="icon-list-alt"></i> CM Tracker</a></li>
+				<li class="active"><a href="#dashboard" data-toggle="tab"><i class="icon-dashboard"></i> Dashboard</a></li>
+				<li><a href="#indicators" data-toggle="tab"><i class="icon-list"></i> Indicators</a></li>
+				<li><a href="#cmtracker" data-toggle="tab" id="cmtrackerlinktop"><i class="icon-list-alt"></i> CM Tracker</a></li>
 			</ul>
 			<form class="navbar-form navbar-left hide" role="search">
-			  <div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			  </div>
-			  <button type="submit" class="btn btn-default">Submit</button>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
 			</form>
 			<ul class="navbar-right">
-			  <li class="dropdown nav navbar-nav header-btn">
-			  	<a href="#" class="btn-notifications"><i class="icon-envelope btn"></i></a>
-				<a href="#" class="btn btn-default btn-sm btn-header" data-toggle="dropdown" title="Settings"><i class="icon-gear btn-settings"></i> <i class="icon-caret-down pull-right"></i></a>
-				<ul class="dropdown-menu dropdown-custom-menu">
-					<li><a href="#">Dashboard Settings</a></li>
-					<li><a href="#">Keyboard Shortcuts</a></li>
-					<li class="divider"></li>
-					<li><a href="#">Help</a></li>
-				</ul>
-			  </li>
+			  	<li class="dropdown nav navbar-nav header-btn">
+			  		<a href="#" class="btn-notifications"><i class="icon-envelope btn"></i></a>
+					<a href="#" class="btn btn-default btn-sm btn-header" data-toggle="dropdown" title="Settings"><i class="icon-gear btn-settings"></i> <i class="icon-caret-down pull-right"></i></a>
+					<ul class="dropdown-menu dropdown-custom-menu">
+						<li><a href="#">Dashboard Settings</a></li>
+						<li><a href="#">Keyboard Shortcuts</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</li>
 			</ul>
-		  </div><!-- /.navbar-collapse -->
+		</div><!-- /.navbar-collapse -->
 	  </div><!--/container-->
 	</nav>
 	<div class="tab-content">
@@ -117,11 +117,11 @@
 		<div class="container">		
 			<div class="alert alert-success alert-dismissable custom-alert-success" style="padding-top: 15px;padding-bottom:5px ;" onclick="javascript: $( this ).find('p').slideToggle();">
 				<div class="row">
-				  <div class="col-md-1" style="margin-left:15px; margin-right: -50px;"><h4><i class="icon-ok"></i></h4></div>
-				  <div class="col-md-6"><strong>Success!</strong>
+					<div class="col-md-1" style="margin-left:15px; margin-right: -50px;"><h4><i class="icon-ok"></i></h4></div>
+					<div class="col-md-6"><strong>Success!</strong>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique magna eu leo suscipit, a volutpat turpis tempor. Suspendisse sed diam ullamcorper, euismod libero at, ultrices nulla. Proin nec justo vitae eros sagittis blandit.   
 					</p></div>
-				  <div class="col-md-1 pull-right"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div> 
+					<div class="col-md-1 pull-right"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div> 
 				</div>
 			</div>
 
@@ -432,10 +432,10 @@
 									</div>
 								</form>									 
 							</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-primary pull-left" onClick="saveView();" data-dismiss="modal">Save changes</button>
-									<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> 
-								</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary pull-left" onClick="saveView();" data-dismiss="modal">Save changes</button>
+								<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> 
+							</div>
 							</div><!-- /.modal-content -->
 						</div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->	
