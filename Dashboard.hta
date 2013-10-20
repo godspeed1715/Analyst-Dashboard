@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>Analyst Dashboard</title>
+	<head>
+    <meta http-equiv="x-ua-compatible" content="ie=9">
+	<hta:application id="wssm"
+		ICON				= "icon.ico"
+     	border           	= "thin"
+		autocenter			= "yes"
+		APPLICATIONNAME		= "Analyst Dashboard"
+    	borderStyle        	= "normal"
+    	caption           	= "yes"
+    	contextMenu       	= "yes"
+     	maximizeButton    	= "yes"
+     	minimizeButton   	= "yes"
+     	navigable      		= "yes"
+		scroll				= "yes"
+     	showInTaskbar    	= "yes"
+     	singleInstance    	= "no"
+     	sysmenu            	= "yes"
+     	version            	= "0.1.2"
+		windowstate			= "maximize" 
+		 />
+	
+	<!-- Load JS Modules -->
+
+	<script src="jquery-1.10.2.min.js"></script>		
+	<script src="bootstrap.min.js"></script>
+	<script src="jquery.dataTables.js"></script>
+	<script src="jquery-datepicker.js"></script>
+	<script src="bootstrap-select.js"></script>
+	<script src="jquery-ui-1.10.3.custom.js"></script>
+	
+	<script src="./Dependencies/jqvmap/jquery.vmap.js" type="text/javascript"></script>
+    <script src="./Dependencies/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
+	<script src="./Dependencies/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
+	
+	<!-- Load other script modules -->
+	<script language="vbscript" src="vbs/AlopexVBS.vb"></script>
+	
+	<!-- Load stylesheets -->
+	<link href="bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap-select.min.css" rel="stylesheet">
+	<link href="bootstrap-select.css" rel="stylesheet">
+	<link href="./font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="./dashboard-custom/custom.css" rel="stylesheet">
+	<link href="../jqvmap/jqvmap.css" media="screen" rel="stylesheet" type="text/css" />
+	<!-- Extra JS -->
+	<script src="./dashboard-custom/custom-js.js"></script>
+	
+	<!-- Add VB Module -->
+	<script src="./dashboard-custom/custom.vbs" language="VBScript"></script>
+	
+  </head>
+  <body>
+	<nav class="navbar navbar-default .navbar-static-top" role="navigation">
+	  <div class="container">
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav ">
+			  <li class="active"><a href="#dashboard" data-toggle="tab"><i class="icon-dashboard"></i> Dashboard</a></li>
+			  <li><a href="#indicators" data-toggle="tab"><i class="icon-list"></i> Indicators</a></li>
+			  <li><a href="#cmtracker" data-toggle="tab" id="cmtrackerlinktop"><i class="icon-list-alt"></i> CM Tracker</a></li>
+			</ul>
+
+			<form class="navbar-form navbar-left hide" role="search">
+			  <div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+			<ul class="navbar-right">
+			  <li class="dropdown nav navbar-nav header-btn">
+			  	<a href="#" class="btn-notifications"><i class="icon-envelope btn"></i></a>
+				<a href="#" class="btn btn-default btn-sm btn-header" data-toggle="dropdown" title="Settings"><i class="icon-gear btn-settings"></i> <i class="icon-caret-down pull-right"></i></a>
+				<ul class="dropdown-menu dropdown-custom-menu">
+					<li><a href="#">Dashboard Settings</a></li>
+					<li><a href="#">Keyboard Shortcuts</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			  </li>
+			</ul>
+		  </div><!-- /.navbar-collapse -->
+	  </div><!--/container-->
+	</nav>
+	<div class="tab-content">
+	<!-- Begin Home Content -->
+	<div class="tab-pane active" id="dashboard">
+		<div class="header-dropdown">
+			<div class="successmessage hide"></div>
+			<div class="container">
+				<a data-toggle="modal" href="#myModal"  class="btn-sm header-links pull-left" title="Add Widgets"><i class="icon-plus"></i> Add Widgets</a>
+				  <!-- Modal -->
+				  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						  <h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+						  ...
+						</div>
+						<div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						  <button type="button" class="btn btn-primary">Save changes</button>
+						</div>
+					  </div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				  </div><!-- /.modal -->	
+				  <a href="#" class="btn-sm header-links pull-left" title="Manage Widgets"><i class="icon-th-large"></i> Manage Widgets</a>
+				  <a href="#" class="btn-sm header-links pull-right" title="Manage Widgets"><i class="icon-th-large"></i> Select Dashboard</a>
+			</div><!--/container-->
+		</div><!--/header-dropdown-->
+		
+		<div class="container">		
+			<div class="alert alert-success alert-dismissable custom-alert-success" style="padding-top: 15px;padding-bottom:5px ;" onclick="javascript: $( this ).find('p').slideToggle();">
+				<div class="row">
+				  <div class="col-md-1" style="margin-left:15px; margin-right: -50px;"><h4><i class="icon-ok"></i></h4></div>
+				  <div class="col-md-6"><strong>Success!</strong>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique magna eu leo suscipit, a volutpat turpis tempor. Suspendisse sed diam ullamcorper, euismod libero at, ultrices nulla. Proin nec justo vitae eros sagittis blandit.   
+					</p></div>
+				  <div class="col-md-1 pull-right"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button></div> 
+				</div>
+			</div>
+ 
+			<div class="row">
+				<div class="col-md-12">
+				<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-globe"></i> <span class="panel-title-text">HeatMap</span></h3>
+						</div>
+						<div class="panel-body" style="padding: 5px;">
+							<div id="vmap" style="height: 600px; padding: 0px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 column">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-rss"></i> <span class="panel-title-text">Rss Feeds</span></h3>
+						</div>
+						<div class="panel-body">
+							Rss Feeds
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Latest Indicators</span></h3>
+						</div>
+						<div class="panel-body">
+							Indicators
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Latest MSL Entries</span></h3>
+						</div>
+						<div class="panel-body">
+							Text	
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Latest CM actions</span></h3>
+						</div>
+						<div class="panel-body">
+							Text
+						</div>
+					</div>
+				</div><!--/col-md-6-->
+				<div class="col-md-6 column">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-tasks"></i> <span class="panel-title-text">Cyber Fusion Focus</span></h3>
+						</div>
+						<div class="panel-body">
+							<div class="list-group">
+							  <a href="#" class="list-group-item">
+								<h4 class="list-group-item-heading">Item 1</h4>
+								<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+							  </a>						
+								<a href="#" class="list-group-item">
+									<h4 class="list-group-item-heading">Item 2</h4>
+									<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+								</a>
+								<a href="#" class="list-group-item">
+									<h4 class="list-group-item-heading">Item 3</h4>
+									<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+								</a>
+								<a href="#" class="list-group-item">
+									<h4 class="list-group-item-heading">Item 4</h4>
+									<p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div><!--/col-md-6-->
+			</div><!--/row-->		
+		</div><!--/container-->
+	</div><!--/dashboard-->
+	<!-- /End home Content -->
+	<!-- Begin indicators -->
+	<div class="tab-pane" id="indicators">
+		<div class="header-dropdown">
+			<div class="container">
+				<a href="#" class="btn-sm header-links pull-left" title="Add a new indicator"><i class="icon-plus"></i> Add Indicator</a>
+				<a href="#" class="btn-sm header-links pull-left" title="Generate report"><i class="icon-folder-close"></i> Generate Reports</a>
+				<a href="#" class="btn-sm header-links pull-right" title="Show filter"><i class="icon-filter"></i> Show Filter</a>
+				<a href="#" class="btn-sm header-links pull-right" title="Add or remove columns"><i class="icon-columns"></i> Customize Columns</a>
+			</div><!--/container-->
+		</div><!--/header-dropdown-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Indicators</span></h3>
+						</div><!--/panel-heading-->
+						<div class="panel-body">
+							Indicator Table
+						</div><!--/panel-body-->
+					</div><!--/panel-->
+				</div><!--/span12-->
+			</div><!--/row-->
+		</div><!--/container-->
+	</div><!--/indicators-->
+	<!-- /End indicators -->
+	<!-- Begin CM Tracking -->
+	<div class="tab-pane" id="cmtracker">
+		<div class="header-dropdown testmsg">
+			<div class="container">
+				<a data-toggle="modal" data-backdrop="static" href="#addCMAction" class="btn-sm header-links pull-left" title="Add a new CM action"><i class="icon-plus"></i> Add CM Action</a>
+				<!-- Modal -->
+				<div class="modal fade" id="addCMAction" tabindex="-1" role="dialog" aria-labelledby="addCMActionLabel1" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close hide" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title">Add CM Action</h4>
+							</div>
+							<div class="modal-body">
+								<!-- Begin code for Add CM Modal -->
+								<form role="form" class="form-inline">
+								<div class="form-group">									
+										<label for="cmdate">Date</label>
+										<input type="text" class="form-control" id="cmdate" onChange="generateCM();">
+									<fieldset disabled>
+										<label for="cmnumber">CM Number</label>									
+										<input type="text" id="cmnumber" class="form-control" value="text">										
+										<input type="hidden" id="cmdbid" class="form-control" value="text">
+									</fieldset>		
+									<div id="cmlink"></div>
+										<label for="cmanalyst">CM Analyst</label>
+										<select class="form-control selectpicker" id="cmanalyst">
+											<option>Nayland</option>
+											<option>Paul</option>
+											<option>Marvin</option>
+											<option>Kyle</option>
+											<option>Rodney</option>
+											<option>Mike</option>
+											<option>Nate</option>
+											<option>Julian</option>
+											<option>Ahmad</option>
+										</select>
+										<label for="form-control cmthreat">Threat</label>
+										<input type="text" class="form-control" id="cmthreat">
+										<label for="cmaction">Action</label>
+										<input type="text" class="form-control" id="cmaction">
+										<label for="cmtotalsigs">Total Sigs</label>
+										<input type="text" class="form-control" id="cmtotalsigs">									
+										<label for="cmplatform">Platform</label>
+										<select class="form-control selectpicker" id="cmplatform">
+											<option>All Defense Centers</option>
+											<option>Regional DC Only</option>
+											<option>Global DC Only</option>
+											<option>Arcsight</option>
+											<option>AP</option>
+											<option>HBSS</option>
+											<option>WCF</option>
+											<option>ACL</option>
+											<option>Test Sensor</option>
+											<option>Other</option>
+										</select>
+										<label for="cmsource">Source</label>
+										<select class="form-control selectpicker" id="cmsource">
+											<option>ALP</option>
+											<option>Sourcefire</option>
+											<option>Directed</option>
+											<option>Intel</option>
+											<option>Open Source</option>
+										</select>
+										<label for="cmreference">Reference</label>
+										<input type="text" class="form-control" id="cmreference">	
+										<label for="cmstatus">Status</label>
+										<select class="form-control selectpicker" id="cmstatus">
+											<option>In-Work</option>
+											<option>Testing</option>
+											<option>Completed</option>
+											<option>Submitted</option>
+										</select>
+										<label for="cmnotes">Notes</label>
+										<input type="text" class="form-control" id="cmnotes">											
+										<label for="cmdateauth">Date Authorized</label>
+										<input type="text" class="form-control" id="cmdateauth">	
+										<label for="cmdateimplem">Date Implemented</label>
+										<input type="text" class="form-control" id="cmdateimplem">	
+										<label for="cmgtms">GTMS #</label>
+										<input type="text" class="form-control" id="cmgtms">											
+										<label for="cmexternal">External Ticket ID</label>
+										<input type="text" class="form-control" id="cmexternal">	
+										<fieldset disabled>
+										<label for="cmentry">Entry Date</label>
+										<input type="text" class="form-control" id="cmentry">	
+										<label for="cmmodified">Modified Date</label>
+										<input type="text" class="form-control" id="cmmodified">
+										</fieldset>
+									</div>
+								</form>												 
+							</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary pull-left" onClick="addCMAction();" data-dismiss="modal">Add CM Action</button>
+									<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> 
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->	
+					<!-- End modal for add CM -->
+					<!-- Begin modal for view CM -->
+				<!-- Modal -->
+				<div class="modal fade" id="viewcmaction" tabindex="-1" role="dialog" aria-labelledby="viewCMActionLabel1" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close hide" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title">View CM Action</h4>
+							</div>
+							<div class="modal-body">
+								<form role="form" class="form-inline">
+								<div class="form-group">									
+									<fieldset disabled>
+										<label for="viewcmnumber">CM Number</label>									
+										<input type="text" id="viewcmnumber" class="form-control" value="text">										
+										<input type="hidden" id="viewcmdbid" class="form-control" value="text">
+									</fieldset>		
+									<div id="viewcmlink"></div>
+										<label for="viewcmdate">Date</label>
+										<input type="text" class="form-control" id="viewcmdate">
+										<label for="viewcmanalyst">CM Analyst</label>
+										<select class="form-control selectpicker" id="viewcmanalyst">
+											<option>Nayland</option>
+											<option>Paul</option>
+											<option>Marvin</option>
+											<option>Kyle</option>
+											<option>Rodney</option>
+											<option>Mike</option>
+											<option>Nate</option>
+											<option>Julian</option>
+											<option>Ahmad</option>
+										</select>
+										<label for="viewcmthreat">Threat</label>
+										<input type="text" class="form-control" id="viewcmthreat">
+										<label for="viewcmaction2">Action</label>
+										<input type="text" class="form-control" id="viewcmaction2">
+										<label for="viewcmtotalsigs">Total Sigs</label>
+										<input type="text" class="form-control" id="viewcmtotalsigs">										
+										<label for="viewcmtotaldeployed">Total Deployed</label>
+										<input type="text" class="form-control" id="viewcmtotaldeployed">
+										<label for="viewcmtotalsuccess">Total Success</label>
+										<input type="text" class="form-control" id="viewcmtotalsuccess">										
+										<label for="viewcmtotalfailedtesting">Total Failed Testing</label>
+										<input type="text" class="form-control" id="viewcmtotalfailedtesting">
+										<label for="viewcmtotalfailedperf">Total Failed Performance</label>
+										<input type="text" class="form-control" id="viewcmtotalfailedperf">
+										<label for="viewcmtotalfailedfp">Total Failed False Positives</label>
+										<input type="text" class="form-control" id="viewcmtotalfailedfp">										
+										<label for="viewcmplatform">Platform</label>
+										<select class="form-control selectpicker" id="viewcmplatform">
+											<option>All Defense Centers</option>
+											<option>Regional DC Only</option>
+											<option>Global DC Only</option>
+											<option>Arcsight</option>
+											<option>AP</option>
+											<option>HBSS</option>
+											<option>WCF</option>
+											<option>ACL</option>
+											<option>Test Sensor</option>
+											<option>Other</option>
+										</select>
+										<label for="viewcmsource">Source</label>
+										<select class="form-control selectpicker" id="viewcmsource">
+											<option>ALP</option>
+											<option>Sourcefire</option>
+											<option>Directed</option>
+											<option>Intel</option>
+											<option>Open Source</option>
+										</select>
+										<label for="viewcmreference">Reference</label>
+										<input type="text" class="form-control" id="viewcmreference">	
+										<label for="viewcmstatus">Status</label>
+										<select class="form-control selectpicker" id="viewcmstatus">
+											<option>In-Work</option>
+											<option>Testing</option>
+											<option>Completed</option>
+											<option>Submitted</option>
+											<option>Failed Test</option>
+											<option>Disabled Validity</option>
+											<option>Disabled Performance</option>
+											<option>Disabled FP</option>
+										</select>
+										<label for="viewcmnotes">Notes</label>
+										<input type="text" class="form-control" id="viewcmnotes">											
+										<label for="viewcmdateauth">Date Authorized</label>
+										<input type="text" class="form-control" id="viewcmdateauth">	
+										<label for="viewcmdateimplem">Date Implemented</label>
+										<input type="text" class="form-control" id="viewcmdateimplem">	
+										<label for="viewcmgtms">GTMS #</label>
+										<input type="text" class="form-control" id="viewcmgtms">											
+										<label for="viewcmexternal">External Ticket ID</label>
+										<input type="text" class="form-control" id="viewcmexternal">	
+										<fieldset disabled>
+										<label for="viewcmentry">Entry Date</label>
+										<input type="text" class="form-control" id="viewcmentry">	
+										<label for="viewcmmodified">Modified Date</label>
+										<input type="text" class="form-control" id="viewcmmodified">
+										</fieldset>
+									</div>
+								</form>									 
+							</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary pull-left" onClick="saveView();" data-dismiss="modal">Save changes</button>
+									<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> 
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal-dialog -->
+					</div><!-- /.modal -->	
+					<!-- End modal for view CM -->
+			
+					<a href="#" class="btn-sm header-links pull-left" title="Generate ALP Numbers" onClick="runALPs();"><i class="icon-plus"></i> Generate ALP Numbers</a>
+					<a href="#" class="btn-sm header-links pull-left" title="Generate Report"><i class="icon-folder-close"></i> Generate Reports</a>
+					<a href="#" class="btn-sm header-links pull-right" title="Show Filter"><i class="icon-filter"></i> Show Filter</a>
+					<a href="#" class="btn-sm header-links pull-right" title="Add or Remove columns"><i class="icon-columns"></i> Customize Columns</a>
+				</div><!--/container-->
+			</div><!--/header-dropdown-->
+			<div class="successmessage hide"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">CM Tracker</span></h3>
+							</div>
+							<div class="panel-body cm-panel">
+								<table class="display table table-bordered table-nowrap" id="testingtable">
+									<thead>
+										<tr>
+											<th>View</th>
+											<th>ID</th>
+											<th>CM Number</th>
+											<th>Date</th>
+											<th>CM Analyst</th>
+											<th>Threat</th>
+											<th>Action</th>
+											<th>Total Sigs</th>
+											<th>Total Deployed</th>
+											<th>Total Succeeded</th>
+											<th>Total Failed Testing</th>
+											<th>Total Failed Performance</th>
+											<th>Total Failed FP</th>
+											<th>Platform</th>
+											<th>Source</th>
+											<th>Reference</th>
+											<th>Status</th>
+											<th>Notes</th>
+											<th>Date Authorized</th>
+											<th>Date Implemented</th>
+											<th>GTMS #</th>
+											<th>External Ticket ID</th>
+											<th>Entry Date</th>
+											<th>Modified Date</th>
+										</tr>
+									</thead>
+									<tbody>		
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div><!--/span12-->
+				</div><!--/row-->
+				<div class="row hide" id="ALProw">
+					<div class="col-md-5">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Overall Stats</span></h3>
+							</div>
+							<div class="panel-body">
+								<table id="cmOverallALP" class="display table table-bordered table-condensed table-nowrap">
+									<thead>
+										<tr>
+											<th>Platform</th>
+											<th>Action Count</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>	
+							</div>
+						</div>
+					</div><!--/span12-->				
+					<div class="col-md-7">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Breakdown</span></h3>
+						</div>
+						<div class="panel-body">
+							<table id="cmBreakdownALP" class="display table table-bordered table-condensed table-nowrap">
+								<thead>
+									<tr>
+										<th>Platform</th>
+										<th>Completed</th>
+										<th>Disabled Performance</th>
+										<th>Disabled FP</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>	
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title"><i class="icon-list"></i> <span class="panel-title-text">Percent Successful</span></h3>
+						</div>
+						<div class="panel-body">
+							<table id="cmpercentageview" class="display table table-bordered table-condensed table-nowrap">
+								<thead>
+									<tr>
+										<th>Regional</th>
+										<th>Global</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>	
+						</div>
+					</div>
+				</div>		
+			</div><!-- Container -->
+	</div><!--/cm tracker-->
+  </body>
+</html>
